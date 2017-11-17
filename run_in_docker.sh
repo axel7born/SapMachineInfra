@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 CURRENT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
