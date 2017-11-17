@@ -17,7 +17,7 @@ done
 
 docker rm -f "$CONTAINER_NAME" || echo "Docker container $CONTAINER_NAME is already deleted"
 
-docker build -t $JOB_NAME .
+docker build -t $JOB_NAME $CURRENT_DIRECTORY
 
 # clean up system (stopped containers, volumes, dangling images)
 docker system prune --volumes -f || docker system prune -f || true # allow to fail
