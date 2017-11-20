@@ -15,4 +15,4 @@ cd $REPO_PATH
 git remote add origin $GIT_REPO
 git checkout -b "$HG_PATH"
 
-git push origin "$HG_PATH"
+git push --tags origin "$HG_PATH"
