@@ -33,8 +33,7 @@ set -o pipefail
 # $GIT_PASSWORD - the git password to use
 cat "$SCRIPT" | docker run  "${ADDITIONAL_ENVS[@]/#/}" \
   -e "GIT_USER=$GIT_USER" -e "GIT_PASSWORD=$GIT_PASSWORD" \
-  -i --name "$CONTAINER_NAME" "$JOB_NAME" /bin/bash - \
-| tee "$OUT_FILE"
+  -i --name "$CONTAINER_NAME" "$JOB_NAME" /bin/bash - 
 set +o pipefail
 
 # remove container

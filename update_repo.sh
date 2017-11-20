@@ -5,9 +5,7 @@ HG_PATH="jdk/jdk"
 #HG_HOST="bitbucket.org"
 #HG_PATH="axel7born/mercurial2git"
 
-
-
-GIT_REPO="http://${GIT_USER}:${GIT_PASSWORD}@github.com/axel7born/SapMachine"
+GIT_REPO="http://${GIT_USER}:${GIT_PASSWORD}@github.com/SAP/SapMachine"
 
 git hg clone "http://$HG_HOST/$HG_PATH"
 
