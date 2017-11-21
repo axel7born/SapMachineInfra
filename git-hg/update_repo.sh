@@ -13,6 +13,8 @@ fi
 
 whoami
 
+env
+
 GIT_REPO="http://${GIT_USER}:${GIT_PASSWORD}@github.com/SAP/SapMachine"
 REPO_PATH="$(basename $HG_PATH)"
 
