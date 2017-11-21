@@ -11,8 +11,6 @@ if [[ -z "$GIT_USER" ]] || [[ -z "$GIT_PASSWORD" ]]; then
     exit 1
 fi
 
-echo "[extensions]\nhgext.bookmarks =\nhggit =" > $HOME/.hgrc
-
 GIT_REPO="http://${GIT_USER}:${GIT_PASSWORD}@github.com/SAP/SapMachine"
 REPO_PATH="$(basename $HG_PATH)"
 
