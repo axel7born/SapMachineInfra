@@ -1,10 +1,10 @@
 #!/bin/bash
 set -ex
 
-HG_HOST="hg.openjdk.java.net"
-HG_PATH="jdk/jdk"
-#HG_HOST="bitbucket.org"
-#HG_PATH="axel7born/mercurial2git"
+#HG_HOST="hg.openjdk.java.net"
+#HG_PATH="jdk/jdk"
+HG_HOST="bitbucket.org"
+HG_PATH="axel7born/mercurial2git"
 
 if [[ -z "$GIT_USER" ]] || [[ -z "$GIT_PASSWORD" ]]; then
     echo "Missing mandatory environment variables GIT_USER or GIT_PASSWORD"
@@ -14,6 +14,7 @@ fi
 GIT_REPO="http://${GIT_USER}:${GIT_PASSWORD}@github.com/SAP/SapMachine"
 REPO_PATH="$(basename $HG_PATH)"
 
+echo $WORKSPACE
 cd $WORKSPACE
 
 if [ ! -d $REPO_PATH ]; then
@@ -23,6 +24,8 @@ if [ ! -d $REPO_PATH ]; then
   git checkout -b "$HG_PATH"
 else
   cd $REPO_PATH
+  git remote remove origin
+  git remote add origin $GIT_REPO
   git hg pull
   git checkout "$HG_PATH"
 fi

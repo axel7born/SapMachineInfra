@@ -32,8 +32,9 @@ set -o pipefail
 # the following environment variables are passed to the container
 # $GIT_USER - the git user to use
 # $GIT_PASSWORD - the git password to use
-cat "$SCRIPT" | docker run  "${ADDITIONAL_ENVS[@]/#/}" \
+cat "$SCRIPT" | docker run  -v $WORKSPACE:/docker/shared "${ADDITIONAL_ENVS[@]/#/}" \
   -e "GIT_USER=$GIT_USER" -e "GIT_PASSWORD=$GIT_PASSWORD" \
+  -e "WORKSPACE=/docker/shared" \
   -i --name "$CONTAINER_NAME" "$JOB_NAME" /bin/bash -
 set +o pipefail
 
