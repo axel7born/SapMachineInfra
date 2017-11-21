@@ -3,12 +3,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Create Workdir') {
+          steps{
+            sh 'mkdir $WORKSPACE/docker-shared || true'
+          }
+        }
 
         stage('Build') {
 
             agent {
               dockerfile { dir 'git-hg'
-                args '-v $HOME:/root/host_home'
                 }
             }
             steps {
