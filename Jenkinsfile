@@ -6,7 +6,7 @@ pipeline {
               dockerfile { dir 'git-hg' }
             }
             steps {
-                sh 'git-hg/update-repo.sh'
+                sh 'git-hg/update_repo.sh'
             }
         }
     }
