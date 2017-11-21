@@ -2,13 +2,6 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Create Workdir') {
-          steps{
-            sh 'mkdir $WORKSPACE/docker-shared || true'
-          }
-        }
-
         stage('Build') {
 
             agent {
