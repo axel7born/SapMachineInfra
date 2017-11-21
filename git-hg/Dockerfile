@@ -10,6 +10,6 @@ python-dev \
 python-setuptools
 
 RUN easy_install hg-git
-RUN echo "[extensions]\nhgext.bookmarks =\nhggit =" > /root/.hgrc
+RUN echo "[extensions]\nhgext.bookmarks =\nhggit =" > /etc/mercurial/hgrc
 
 RUN cd ~ && git clone https://github.com/abourget/git-hg-again && cp git-hg-again/githg.py  /usr/lib/git-core/git-hg
