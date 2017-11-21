@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 HG_HOST="hg.openjdk.java.net"
 HG_PATH="jdk/jdk"
