@@ -37,6 +37,7 @@ RUN apt-get update \
     git \
     unzip \
     realpath \
+    ca-certificates \
 && rm -rf /var/lib/apt/lists/*
 
 
