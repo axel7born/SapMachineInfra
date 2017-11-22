@@ -1,9 +1,10 @@
 #!/bin/bash
+set -ex
 
 wget https://github.com/AdoptOpenJDK/openjdk9-releases/releases/download/jdk-9%2B181/OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 tar zxvf OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 
-git clone -b jdk/jdk http://github.com/SAP/SapMachine
+git clone http://github.com/SAP/SapMachine
 cd SapMachine
 git checkout $TAG
 
