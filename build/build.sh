@@ -28,4 +28,4 @@ fi
 
 #TODO. check if tag exists
 
-github-release upload -u axel7born -r SapMachine -t $TAG -n SapMachine.tgz -f SapMachine.tgz
+github-release upload -u SAP -r SapMachine -t $TAG -n SapMachine.tgz -f SapMachine.tgz
