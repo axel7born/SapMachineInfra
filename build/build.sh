@@ -1,6 +1,13 @@
 #!/bin/bash
 set -ex
 
+#check if release exists
+
+if output=$(github-release info -u SAP -r SapMachine -t $TAG);then
+  echo "Release exits"
+  exit 0
+fi
+
 wget https://github.com/AdoptOpenJDK/openjdk9-releases/releases/download/jdk-9%2B181/OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 tar zxvf OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 
@@ -25,8 +32,6 @@ if [ -z $GITHUB_TOKEN ]; then
   echo "FAILURE: GITHUB_TOKEN not set"
   exit 1
 fi
-
-#TODO. check if tag exists
 
 github-release release -u SAP -r SapMachine -t $TAG
 github-release upload -u SAP -r SapMachine -t $TAG -n SapMachine.tgz -f SapMachine.tgz
