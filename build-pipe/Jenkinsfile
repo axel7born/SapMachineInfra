@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            environment {
+                SAPMACHINE_GIT_REPO = 'https://github.com/axel7born/SapMachine.git'
+                SAPMACHINE_GIT_BRANCH = 'jdk/jdk'
+                SAPMACHINE_ARCHIVE_NAME_PREFIX = 'sapmachine_linux-x64'
+                SAPMACHINE_PUBLISH_GITHUB_TOKEN = credentials('github_reshnm')
+                SAPMACHINE_PUBLISH_GITHUB_REPO_NAME = 'SapMachineInfra'
+                SAPMACHINE_PUBLISH_GITHUB_USER = 'reshnm'
+            }
+            agent {
+                dockerfile { dir 'docker/ubuntu_16_04_x86_64' }
+            }
+            steps {
+                sh 'bash ./build.sh'
+            }
+            post {
+                success {
+                    sh 'bash ./publish.sh'
+                }
+            }
+        }
+    }
+}
