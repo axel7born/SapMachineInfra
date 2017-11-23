@@ -11,7 +11,7 @@ fi
 wget https://github.com/AdoptOpenJDK/openjdk9-releases/releases/download/jdk-9%2B181/OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 tar zxvf OpenJDK9_x64_Linux_jdk-9.181.tar.gz
 
-git clone "http://axel7born:$GITHUB_TOKEN@github.com/SAP/SapMachine"
+git clone "http://$GIT_USER:$GIT_PASSWORD@github.com/SAP/SapMachine"
 cd SapMachine
 git checkout $TAG
 
