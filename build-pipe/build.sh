@@ -1,4 +1,5 @@
 #!/bin/sh
+set -ex
 
 if [ -d SapMachine ]; then
     rm -rf SapMachine;
