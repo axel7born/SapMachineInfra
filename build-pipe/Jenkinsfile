@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             environment {
               SAPMACHINE_GIT_REPO = 'https://github.com/axel7born/SapMachine.git'
-              SAPMACHINE_GIT_BRANCH = 'build-test'
+              SAPMACHINE_GIT_BRANCH = 'jdk/jdk'
               SAPMACHINE_ARCHIVE_NAME_PREFIX = 'sapmachine_linux-x64'
               SAPMACHINE_PUBLISH_GITHUB_TOKEN = credentials('axel7born-github')
               SAPMACHINE_PUBLISH_GITHUB_REPO_NAME = 'SapMachine'
@@ -14,11 +14,11 @@ pipeline {
                 dockerfile { dir 'build-pipe/docker/ubuntu_16_04_x86_64' }
             }
             steps {
-                sh 'build-pipe/build.sh'
+                sh 'bash build-pipe/build.sh'
             }
             post {
                 success {
-                    sh 'build-pipe/publish.sh'
+                    sh 'bash build-pipe/publish.sh'
                 }
             }
         }
