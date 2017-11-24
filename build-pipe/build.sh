@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -ex
 
 if [ -d SapMachine ]; then
@@ -17,7 +17,7 @@ bash ./configure --with-boot-jdk=$BOOT_JDK
 make JOBS=12 images
 
 cd build
-cd `ls`/images
+cd "$(ls)"/images
 
 tar czf ../../../../"${SAPMACHINE_ARCHIVE_NAME_PREFIX}-jdk.tar.gz" jdk
 tar czf ../../../../"${SAPMACHINE_ARCHIVE_NAME_PREFIX}-jre.tar.gz" jre

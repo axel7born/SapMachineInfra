@@ -14,11 +14,15 @@ pipeline {
                 dockerfile { dir 'build-pipe/docker/ubuntu_16_04_x86_64' }
             }
             steps {
-                sh 'bash build-pipe/build.sh'
+                sh '''
+                  build-pipe/build.sh
+                  '''
             }
             post {
                 success {
-                    sh 'bash build-pipe/publish.sh'
+                    sh '''
+                      build-pipe/publish.sh
+                      '''
                 }
             }
         }

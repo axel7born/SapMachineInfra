@@ -1,16 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 set -ex
 
 TIMESTAMP=`date +'%Y%m%d_%H_%M_%S'`
 TIMESTAMP_LONG=`date +'%Y/%m/%d %H:%M:%S'`
-
-if [ -z $GIT_TAG_NAME ]; then
-  GIT_TAG_NAME="snapshot-${TIMESTAMP}"
-  GIT_TAG_DESCRIPTION="Snapshot ${TIMESTAMP_LONG}"
-  GIT_TAG_OPTION="-t $GIT_TAG_NAME -d $GIT_TAG_DESCRIPTION --pre-release"
-else
-  GIT_TAG_OPTION="-t $GIT_TAG_NAME"
-fi
 
 ARCHIVE_NAME_JDK="${SAPMACHINE_ARCHIVE_NAME_PREFIX}-${GIT_TAG_NAME}.tar.gz"
 ARCHIVE_FILE_JDK="${SAPMACHINE_ARCHIVE_NAME_PREFIX}-jdk.tar.gz"
@@ -22,9 +14,14 @@ export GITHUB_USER=$SAPMACHINE_PUBLISH_GITHUB_USER
 export GITHUB_REPO=$SAPMACHINE_PUBLISH_GITHUB_REPO_NAME
 
 
-github-release -v \
-    release \
-    $GIT_TAG_OPTION
+if [ -z $GIT_TAG_NAME ]; then
+  GIT_TAG_NAME="snapshot-${TIMESTAMP}"
+  GIT_TAG_DESCRIPTION="Snapshot ${TIMESTAMP_LONG}"
+  github-release release -t $GIT_TAG_NAME --pre-release -d "$GIT_TAG_DESCRIPTION"
+
+else
+  github-release release -t $GIT_TAG_NAME
+fi
 
 github-release -v \
     upload \
