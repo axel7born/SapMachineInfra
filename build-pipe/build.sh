@@ -5,7 +5,7 @@ if [ -d SapMachine ]; then
     rm -rf SapMachine;
 fi
 
-git clone -b $SAPMACHINE_GIT_BRANCH $SAPMACHINE_GIT_REPO SapMachine
+git clone -b $SAPMACHINE_GIT_BRANCH "http://$GIT_USER:$GIT_PASSWORD@$SAPMACHINE_GIT_REPO" SapMachine
 
 cd SapMachine
 
