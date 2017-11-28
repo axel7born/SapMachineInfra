@@ -9,11 +9,13 @@ git clone -b $SAPMACHINE_GIT_BRANCH "http://$GIT_USER:$GIT_PASSWORD@$SAPMACHINE_
 
 cd SapMachine
 
-if [ ! -z $GIT_TAG_NAME ]; then
+if [[ ! -z $GIT_TAG_NAME ]] && [[ $GIT_TAG_NAME == jdk-* ]]; then
   git checkout $GIT_TAG_NAME
+  bash ./configure --with-boot-jdk=$BOOT_JDK --with-version-string=${GIT_TAG_NAME: 4}
+else
+  bash ./configure --with-boot-jdk=$BOOT_JDK
 fi
 
-bash ./configure --with-boot-jdk=$BOOT_JDK
 make JOBS=12 images
 
 cd build
